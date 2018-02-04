@@ -14,7 +14,7 @@ services:
     build:
       context: elasticsearch/
     volumes:
-      - monitor_elasticsearch:/usr/share/elasticsearch/config:ro
+      - monitor_elasticsearch:/usr/share/elasticsearch/config
     ports:
       - "9200:9200"
       - "9300:9300"
@@ -27,8 +27,8 @@ services:
     build:
       context: logstash/
     volumes:
-      - monitor_logstash:/usr/share/logstash/config:ro
-      - monitor_logstash_pipeline:/usr/share/logstash/pipeline:ro
+      - monitor_logstash:/usr/share/logstash/config
+      - monitor_logstash_pipeline:/usr/share/logstash/pipeline
     ports:
       - "5000:5000"
     environment:
@@ -42,7 +42,7 @@ services:
     build:
       context: kibana/
     volumes:
-      - monitor_kibana:/usr/share/kibana/config:ro
+      - monitor_kibana:/usr/share/kibana/config
     ports:
       - "5601:5601"
     networks:
