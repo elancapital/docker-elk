@@ -12,7 +12,7 @@ services:
     build:
       context: elasticsearch/
     volumes:
-      - monitor_elasticsearch:/usr/share/elasticsearch
+      - monitor_elasticsearch:/usr/share/elasticsearch/config
     ports:
       - "9200:9200"
       - "9300:9300"
@@ -39,7 +39,7 @@ services:
     build:
       context: kibana/
     volumes:
-      - monitor_kibana:/usr/share/kibana
+      - monitor_kibana:/usr/share/kibana/config
     ports:
       - "5601:5601"
     networks:
