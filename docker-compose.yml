@@ -14,7 +14,7 @@ services:
     build:
       context: elasticsearch/
     volumes:
-      - monitor_elasticsearch:/usr/share/elasticsearch/config
+      - /opt/docker/volume/monitor/elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro
     ports:
       - "9200:9200"
       - "9300:9300"
@@ -42,7 +42,7 @@ services:
     build:
       context: kibana/
     volumes:
-      - monitor_kibana:/usr/share/kibana/config
+      - monitor_kibana:/usr/share/kibana/config:ro
     ports:
       - "5601:5601"
     networks:
