@@ -12,7 +12,7 @@ services:
     build:
       context: elasticsearch/
     volumes:
-      - monitor_elasticsearch:/usr/share/elasticsearch/config/elasticsearch.yml:ro
+      - monitor_elasticsearch:/usr/share/elasticsearch/config
     ports:
       - "9200:9200"
       - "9300:9300"
