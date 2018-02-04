@@ -4,6 +4,8 @@ volumes:
         external: true
     monitor_logstash:
         external: true
+    monitor_logstash_pipeline:
+        external: true
     monitor_kibana:
         external: true
 services:
