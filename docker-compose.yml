@@ -1,6 +1,10 @@
 version: '2'
 volumes:
-    monitor:
+    monitor_elasticsearch:
+        external: true
+    monitor_logstash:
+        external: true
+    monitor_kibana:
         external: true
 services:
 
@@ -8,7 +12,7 @@ services:
     build:
       context: elasticsearch/
     volumes:
-      - monitor/elasticsearch:/usr/share/elasticsearch
+      - monitor_elasticsearch:/usr/share/elasticsearch
     ports:
       - "9200:9200"
       - "9300:9300"
@@ -21,7 +25,7 @@ services:
     build:
       context: logstash/
     volumes:
-      - monitor/logstash:/usr/share/logstash
+      - monitor_logstash:/usr/share/logstash
     ports:
       - "5000:5000"
     environment:
@@ -35,7 +39,7 @@ services:
     build:
       context: kibana/
     volumes:
-      - monitor/kibana:/usr/share/kibana
+      - monitor_kibana:/usr/share/kibana
     ports:
       - "5601:5601"
     networks:
