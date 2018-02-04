@@ -14,7 +14,7 @@ services:
     build:
       context: elasticsearch/
     volumes:
-      - monitor_elasticsearch:/usr/share/elasticsearch/config/elasticsearch.yml:ro
+      - monitor_elasticsearch:/usr/share/elasticsearch/config:ro
     ports:
       - "9200:9200"
       - "9300:9300"
@@ -27,7 +27,7 @@ services:
     build:
       context: logstash/
     volumes:
-      - monitor_logstash:/usr/share/logstash/config/logstash.yml:ro
+      - monitor_logstash:/usr/share/logstash/config:ro
       - monitor_logstash_pipeline:/usr/share/logstash/pipeline:ro
     ports:
       - "5000:5000"
