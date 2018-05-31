@@ -1,20 +1,12 @@
 version: '2'
-volumes:
-    monitor_elasticsearch:
-        external: true
-    monitor_logstash:
-        external: true
-    monitor_logstash_pipeline:
-        external: true
-    monitor_kibana:
-        external: true
+
 services:
 
   elasticsearch:
     build:
       context: elasticsearch/
     volumes:
-      - /opt/docker/volume/monitor/elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro
+      - /opt/docker/volume/docker/elk/elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro
     ports:
       - "9200:9200"
       - "9300:9300"
@@ -27,8 +19,8 @@ services:
     build:
       context: logstash/
     volumes:
-      - monitor_logstash:/usr/share/logstash/config
-      - monitor_logstash_pipeline:/usr/share/logstash/pipeline
+      - /opt/docker/volume/docker/elk/logstash/config:/usr/share/logstash/config
+      - /opt/docker/volume/docker/elk/logstash/pipeline:/usr/share/logstash/pipeline
     ports:
       - "5000:5000"
     environment:
@@ -42,7 +34,7 @@ services:
     build:
       context: kibana/
     volumes:
-      - monitor_kibana:/usr/share/kibana/config:ro
+      - /opt/docker/volume/docker/elk/kibana/config:/usr/share/kibana/config:ro
     ports:
       - "5601:5601"
     networks:
